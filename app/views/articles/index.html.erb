@@ -1,0 +1,25 @@
+<!--Implementing a index view of all articles-->s
+<h1>Listing all articles</h1>
+
+<p>
+  <%= link_to 'Create new article', new_article_path %>
+</p>
+
+<!--Iterate through each article and display attributes-->
+<table>
+  <tr>
+    <th>Title </th>
+    <th>Description</th>
+  </tr>
+  
+  <% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.description %></td>
+    <!--We pass in the article object for that individual article-->
+    <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    <td><%= link_to 'Show', article_path(article) %></td>
+   
+  </tr>
+<% end %>
+</table>
