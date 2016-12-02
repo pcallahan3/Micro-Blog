@@ -7,14 +7,25 @@ class ArticlesController < ApplicationController
     
   end
   
+   def show
+    @article = Article.find(params[:id])
+  end
+  
   #create method to create a new article: doesnt require a view
   def create
-    #render plain: params[:article].inspect
     @article = Article.new(article_params)
-    @article.save
-    #Redirecting to article_show path to render newly created article
-    redirect_to articles_show(@article)
+    
+    #If article is successfully saved render message and redirect to article_show path to render newly created article
+    #Else re-render the 'new' view again
+    if @article.save
+      flash[:notice] = "Article was successfully created."
+      redirect_to article_path(@article)
+    else
+      render 'new'
+    end
   end
+  
+ 
   
   
   
