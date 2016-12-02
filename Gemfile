@@ -47,7 +47,7 @@ group :development do
   gem 'spring'
 end
 
- 
+#Pertaining to the Heroku production servers
 group :production do
   #Postgre db gem
   gem 'pg'
