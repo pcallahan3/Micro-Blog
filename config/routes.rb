@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   #Routes for home page which is the new default route and about page
   root 'pages#home'
   get 'about', to: 'pages#about'
+  
+  #Gives us a new_article_path, a POST to create articles, and edit_article_path, a patch to update articles
+  #delete_article_path, show_article_path, and an index_article_path
+  resources :articles
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
