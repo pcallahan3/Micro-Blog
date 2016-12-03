@@ -1,6 +1,7 @@
 #Implementing a new articles_controller
 class ArticlesController < ApplicationController
   
+  #index method to grab all articles and display them 
   def index
     @articles = Article.all
   end
@@ -8,7 +9,6 @@ class ArticlesController < ApplicationController
   #new method to create a new article
   def new
     @article = Article.new
-    
   end
   
   #edit method that finds the article id to edit
@@ -19,6 +19,14 @@ class ArticlesController < ApplicationController
    #show method that finds the id of article to show
    def show
     @article = Article.find(params[:id])
+  end
+  
+  #destroy action that finds article id and deletes the article
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Article was successfully deleted."
+    redirect_to articles_path
   end
   
   #create method to create a new article: doesnt require a view
@@ -35,7 +43,7 @@ class ArticlesController < ApplicationController
     end
   end
   
-  #update action to update article, if succesful render message, else rended edit template again
+  #update action to update article, if succesful render message, else re-render 'edit' template again
   def update
     @article = Article.find(params[:id])  
     if @article.update(article_params)

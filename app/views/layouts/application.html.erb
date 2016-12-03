@@ -8,14 +8,8 @@
 </head>
 <body>
 
-<!--Displaying flash message that article was successfully created-->
-<% flash.each do |name,msg| %>
-  <ul>
-    <li>
-      <%= msg %>
-    </li>
-  </ul>
-<% end %>
+<!--Rendering message partial-->
+<%= render 'layouts/messages' %>
 
 
 <%= yield %>

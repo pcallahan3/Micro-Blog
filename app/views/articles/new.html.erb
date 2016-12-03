@@ -2,39 +2,9 @@
 <h1>Create an article</h1>
 
 
-<!--If input doesnt pass validation display errors for attributes-->
-<% if @article.errors.any? %>
-<h2>The following errors prevented the article from being created.</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-     <li>
-       <%= msg %>
-     </li>
-    <% end %>
-  </ul>
-<% end %>
 
-<!--Rails form_for for a new article-->
-<%= form_for @article do |f| %>
+<!--Rendering form partial-->
+<%= render 'form' %>
 
-  <p>
-    <!--Label name and text field for title attribute-->
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  
-  <p>
-     <!--Label name and text area for description attribute-->
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-  
-  <p>
-     <!--Submit button for form-->
-    <%= f.submit %>
-  </p>
-  
-  
-
-<% end %>
+<!--Link back to articles_path-->
  <%= link_to 'Back to articles listing', articles_path %>
