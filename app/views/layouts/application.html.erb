@@ -8,11 +8,16 @@
 </head>
 <body>
 
-<!--Rendering message partial-->
+<!--Rendering message and navigation partial-->
+<%= render 'layouts/navigation' %>
 <%= render 'layouts/messages' %>
 
-
-<%= yield %>
-
+  <!--Add spacing on the left and right-->
+  <div class="container">
+    <%= yield %>
+  </div>
+  
+  <%= render 'layouts/footer' %>
+  
 </body>
 </html>
