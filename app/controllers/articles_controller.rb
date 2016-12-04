@@ -27,9 +27,8 @@ class ArticlesController < ApplicationController
   
   #destroy action that finds article id and deletes the article
   def destroy
-    
     @article.destroy
-    flash[:notice] = "Article was successfully deleted."
+    flash[:danger] = "Article was successfully deleted."
     redirect_to articles_path
   end
   
@@ -40,7 +39,7 @@ class ArticlesController < ApplicationController
     #If article is successfully saved render message and redirect to article_show path to render newly created article
     #Else re-render the 'new' view again
     if @article.save
-      flash[:notice] = "Article was successfully created."
+      flash[:success] = "Article was successfully created."
       redirect_to article_path(@article)
     else
       render 'new'
@@ -51,7 +50,7 @@ class ArticlesController < ApplicationController
   def update
       
     if @article.update(article_params)
-      flash[:notice] = "Article was successfully updated"
+      flash[:success] = "Article was successfully updated"
       redirect_to article_path(@article)
     else
       render 'edit'

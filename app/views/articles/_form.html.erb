@@ -1,29 +1,5 @@
-<!--If input doesnt pass validation display errors for attributes-->
-<% if @article.errors.any? %>
-<div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <h2 class="panel-title">
-          <!--pluralize method will take the word error and if you get one error will output just "error"
-              but if you get mutiple errors will output "errors"-->
-          <%= pluralize(@article.errors.count, "error" )%>
-          prohibited this article from being saved: 
-        </h2>
-        <div class="panel-body">
-          <ul>
-            <!--Iterating thorugh error messages-->
-             <% @article.errors.full_messages.each do |msg| %>
-              <li>><%= msg %> </li>
-             <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<% end %>
+<!--Rendering errors message partial with @article instance variable-->
+<%= render 'shared/errors', obj: @article %>
 
 <!--Title and description section-->
 <div class="row">
