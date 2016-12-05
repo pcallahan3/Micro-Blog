@@ -1,27 +1,28 @@
 <!--Implementing a index view of all articles-->
-<h1>Listing all articles</h1>
-
-<!--Link to new_article_path-->
-<p>
-  <%= link_to 'Create new article', new_article_path %>
-</p>
+<h1 align="center">Listing all articles</h1>
 
 <!--Iterate through each article and display attributes-->
-<table>
-  <tr>
-    <th>Title </th>
-    <th>Description</th>
-  </tr>
-  
   <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.description %></td>
-    <!--We pass in the article object for that individual article-->
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Show', article_path(article) %></td>
-    <!--Include the method: :deleter syntax for the destroy action, and add a confirmation message-->
-    <td><%= link_to 'Delete', article_path(article), method: :delete ,data: {confirm:"Are you sure"} %></td>
-  </tr>
-<% end %>
-</table>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-lg">
+          <div class="article-title">
+             <!--article.title is a link that goes to the show article to sohw the title of article page-->
+             <%= link_to article.title, article_path(article) %>
+          </div>
+          <div class="article-body">
+            <!--Using a the truncate method to cut article off at 100 chars-->
+             <%= truncate(article.description, length: 100) %>
+          </div>
+            <div class="article-actions">
+              <!--Link back to edit_article_path or articles_path-->
+              <%= link_to 'Edit this article', edit_article_path(article), class: "btn btn-xs btn-primary" %> 
+              <!--Deleting article and rendering a alert box-->
+              <%= link_to 'Delete list article', article_path(article), method: :delete, 
+                                                data: {confirm: "Are you sure you want to delete the article?"}, 
+                                                class: "btn btn-xs btn-danger" %>
+          </div>
+      </div>
+    </div>
+  </div>
+  <% end %>

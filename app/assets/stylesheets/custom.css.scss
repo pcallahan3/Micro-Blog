@@ -57,6 +57,17 @@ $navbar-default-bg: #edd2bc;
   margin-top: 0;
 }
 
+//CSS for index.html.erb
+.article-title{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.article-body{
+  border-top: 1px solid #eaeaea;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 //CSS for footer
 footer{
   margin-top: 45px;
@@ -83,4 +94,6 @@ footer ul li{
 .btn{
   background-color:#FA8072 !important;
 }
+
+
 
