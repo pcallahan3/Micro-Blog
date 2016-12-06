@@ -1,0 +1,61 @@
+<!--Rendering errors message partial with @article instance variable-->
+<%= render 'shared/errors', obj: @user %>
+
+<!--Title and description section-->
+<div class="row">
+  <div class="col-xs-12">
+
+    <!--Rails form_for for a new article which will align every element as a horizontal form-->
+    <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    
+     <!--Title section-->
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <!--Label name and text field for username attribute-->
+        <%= f.label :username %>
+      </div>
+      <div class="col-sm-8">
+        <!--Setting text field to username, with a form control class, a place holder, and autofocus-->
+        <%= f.text_field :username, class: "form-control", placeholder: "Enter user name", autofocus: true %>
+      </div>
+    </div>
+    
+    <!--Description section-->
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <!--Label name and text area for email attribute-->
+        <%= f.label :email %>
+      </div>
+      <div class="col-sm-8">
+        <!--Setting email_field to email, with a form control class, a place holder, and autofocus-->
+        <%= f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true %>
+      </div>
+    </div>
+    
+     <!--Description section-->
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <!--Label name and text area for password attribute-->
+        <%= f.label :password %>
+      </div>
+      <div class="col-sm-8">
+        <!--Setting password-field to password, with a form control class, a place holder, and autofocus-->
+        <%= f.password_field :password, class: "form-control", placeholder: "Enter password", autofocus: true %>
+      </div>
+    </div>
+
+     <!--Signup button for form which cjecks if an exisitng record is present if not then renders "Sign up" button
+         or renders "Update account" button if it is present-->
+     <div class="form-group">
+       <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit(@user.new_record? ? "Signup" : "Update account", class: "btn btn-primary btn-lg") %>
+       </div>
+     </div>
+    <% end %>
+    
+    <div class="col-xs-4 col-xs-offset-4">
+      <!--Link back to articles_path-->
+     [ <%= link_to 'Cancel request and return to articles listing', articles_path %> ]
+    </div>
+  </div>
+</div>
