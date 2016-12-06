@@ -34,7 +34,6 @@ class ArticlesController < ApplicationController
   
   #create method to create a new article: doesnt require a view
   def create
-    debugger
     @article = Article.new(article_params)
     
     #This will ensure that my article will have a user

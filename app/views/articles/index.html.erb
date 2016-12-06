@@ -11,8 +11,16 @@
              <%= link_to article.title, article_path(article) %>
           </div>
           <div class="article-body">
-            <!--Using a the truncate method to cut article off at 100 chars-->
+            <!--Using the truncate method to cut article off at 100 chars-->
              <%= truncate(article.description, length: 100) %>
+             <div class="article-meta-details">
+               <!--We re getting the user who is associated with this article-->
+               <!--And getting the time when it was created at-->
+               <small>Created by: <%= article.user.username if article.user %>,
+                      <%= time_ago_in_words(article.created_at) %> ago,
+                      last updated: <%= time_ago_in_words(article.updated_at) %> ago
+               </small>
+             </div>
           </div>
             <div class="article-actions">
               <!--Link back to edit_article_path or articles_path-->
