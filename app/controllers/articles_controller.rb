@@ -34,7 +34,11 @@ class ArticlesController < ApplicationController
   
   #create method to create a new article: doesnt require a view
   def create
+    debugger
     @article = Article.new(article_params)
+    
+    #This will ensure that my article will have a user
+    @article.user = User.first
     
     #If article is successfully saved render message and redirect to article_show path to render newly created article
     #Else re-render the 'new' view again

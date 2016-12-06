@@ -19,5 +19,7 @@
   
   <%= render 'layouts/footer' %>
   
+  <!--This will diplay a box with the controller name, action, and id-->
+  <%= debug(params) if Ruby.env.development? %>
 </body>
 </html>

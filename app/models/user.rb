@@ -1,5 +1,12 @@
 #User class for users table
 class User < ActiveRecord::Base
+  
+  #Since the user is the one side of one-to many
+  has_many :articles
+  
+  #Ensuring th e email is converted to lowercase before hitting db
+  before_save {self.email = email.downcase}
+  
   #Validating username for presence, min/max length, and uniqueness and ignore case sensitivity
   validates :username, presence: true, 
              length: {minimum: 3, maximum: 25}, 
