@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   #delete_article_path, show_article_path, and an index_article_path
   resources :articles
 
+  #Signup page sent to the users controller
+  get 'signup', to: 'users#new'
+  #Will ensure all the routes are avaiable except the 'signup' one i already created
+  resources :users, except:[:new]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
