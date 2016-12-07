@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   end
 end
 
+  #show method to find the user whose  id based on it 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
     

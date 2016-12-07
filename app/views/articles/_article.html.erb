@@ -1,0 +1,35 @@
+
+
+<!--Iterate through each article and display attributes-->
+  <% obj.each do |article| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-lg">
+          <div class="article-title">
+             <!--article.title is a link that goes to the show article to sohw the title of article page-->
+             <%= link_to article.title, article_path(article) %>
+          </div>
+          <div class="article-body">
+            <!--Using the truncate method to cut article off at 100 chars-->
+             <%= truncate(article.description, length: 100) %>
+             <div class="article-meta-details">
+               <!--We re getting the user who is associated with this article-->
+               <!--And getting the time when it was created at-->
+               <small>Created by: <%= article.user.username if article.user %>,
+                      <%= time_ago_in_words(article.created_at) %> ago,
+                      last updated: <%= time_ago_in_words(article.updated_at) %> ago
+               </small>
+             </div>
+          </div>
+            <div class="article-actions">
+              <!--Link back to edit_article_path or articles_path-->
+              <%= link_to 'Edit this article', edit_article_path(article), class: "btn btn-xs btn-primary" %> 
+              <!--Deleting article and rendering a alert box-->
+              <%= link_to 'Delete list article', article_path(article), method: :delete, 
+                                                data: {confirm: "Are you sure you want to delete the article?"}, 
+                                                class: "btn btn-xs btn-danger" %>
+          </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
