@@ -5,9 +5,10 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit,:update,:show,:destroy]
   
   
-  #index method to grab all articles and display them 
+  #index method to grab articles and display them in a pagination format which will
+  #load the defualt or specified number of items per page
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 3)
   end
   
   #new method to create a new article
